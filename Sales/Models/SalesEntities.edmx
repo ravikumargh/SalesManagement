@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SalesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DealCurrentStatuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DealOpportunityStatuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DealOpportunityTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DealRegions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Deals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="nvarchar(max)" />
+          <Property Name="OppurtunityName" Type="nvarchar(max)" />
+          <Property Name="OppurtunityDescription" Type="nvarchar(max)" />
+          <Property Name="CiarraID" Type="bigint" />
+          <Property Name="DealOpportunityStatusId" Type="bigint" />
+          <Property Name="DealOpportunityTypeId" Type="bigint" />
+          <Property Name="DealVerticalId" Type="bigint" />
+          <Property Name="DealRegionId" Type="bigint" />
+          <Property Name="PractiseId" Type="bigint" />
+          <Property Name="EstAdditionalTCV" Type="bigint" />
+          <Property Name="Duration" Type="bigint" />
+          <Property Name="DealExpClosureQtr" Type="varchar" MaxLength="150" />
+          <Property Name="DealEngStartDate" Type="date" />
+          <Property Name="DealCurrentStatusId" Type="bigint" />
+          <Property Name="SubAdditionalTCV" Type="bigint" />
+          <Property Name="FY16Revenue" Type="bigint" />
+          <Property Name="Q1Revenue" Type="bigint" />
+          <Property Name="Q2Revenue" Type="bigint" />
+          <Property Name="Q3Revenue" Type="bigint" />
+          <Property Name="Q4Revenue" Type="bigint" />
+          <Property Name="Competition" Type="nvarchar(max)" />
+          <Property Name="CurrSupportReq" Type="nvarchar(max)" />
+          <Property Name="WklyRunningUpdates" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="DealFarmingLead" Type="bigint" />
+          <Property Name="DealVLDNLead" Type="bigint" />
+          <Property Name="DeliveryLeadId" Type="bigint" />
+          <Property Name="FarmingAnchorId" Type="bigint" />
+          <Property Name="VLDNAnchorId" Type="bigint" />
+          <Property Name="DeliveryAnchorId" Type="bigint" />
+          <Property Name="ContractSignDate" Type="date" />
+          <Property Name="PractiseSME" Type="nvarchar(max)" />
+          <Property Name="ItemType" Type="nvarchar(max)" />
+          <Property Name="Path" Type="nvarchar(max)" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DealVerticals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DeliveryAnchors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DeliveryLeads">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FarmingAnchors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Practises">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="VLDNAnchors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="SalesModelStoreContainer">
+          <EntitySet Name="DealCurrentStatuses" EntityType="Self.DealCurrentStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DealOpportunityStatuses" EntityType="Self.DealOpportunityStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DealOpportunityTypes" EntityType="Self.DealOpportunityTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DealRegions" EntityType="Self.DealRegions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deals" EntityType="Self.Deals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DealVerticals" EntityType="Self.DealVerticals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeliveryAnchors" EntityType="Self.DeliveryAnchors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeliveryLeads" EntityType="Self.DeliveryLeads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FarmingAnchors" EntityType="Self.FarmingAnchors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Practises" EntityType="Self.Practises" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VLDNAnchors" EntityType="Self.VLDNAnchors" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SalesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DealCurrentStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="DealOpportunityStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="DealOpportunityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="DealRegion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Deal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OppurtunityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OppurtunityDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CiarraID" Type="Int64" />
+          <Property Name="DealOpportunityStatusId" Type="Int64" />
+          <Property Name="DealOpportunityTypeId" Type="Int64" />
+          <Property Name="DealVerticalId" Type="Int64" />
+          <Property Name="DealRegionId" Type="Int64" />
+          <Property Name="PractiseId" Type="Int64" />
+          <Property Name="EstAdditionalTCV" Type="Int64" />
+          <Property Name="Duration" Type="Int64" />
+          <Property Name="DealExpClosureQtr" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DealEngStartDate" Type="DateTime" Precision="0" />
+          <Property Name="DealCurrentStatusId" Type="Int64" />
+          <Property Name="SubAdditionalTCV" Type="Int64" />
+          <Property Name="FY16Revenue" Type="Int64" />
+          <Property Name="Q1Revenue" Type="Int64" />
+          <Property Name="Q2Revenue" Type="Int64" />
+          <Property Name="Q3Revenue" Type="Int64" />
+          <Property Name="Q4Revenue" Type="Int64" />
+          <Property Name="Competition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CurrSupportReq" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WklyRunningUpdates" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DealFarmingLead" Type="Int64" />
+          <Property Name="DealVLDNLead" Type="Int64" />
+          <Property Name="DeliveryLeadId" Type="Int64" />
+          <Property Name="FarmingAnchorId" Type="Int64" />
+          <Property Name="VLDNAnchorId" Type="Int64" />
+          <Property Name="DeliveryAnchorId" Type="Int64" />
+          <Property Name="ContractSignDate" Type="DateTime" Precision="0" />
+          <Property Name="PractiseSME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ItemType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="DealVertical">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="DeliveryAnchor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="DeliveryLead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="FarmingAnchor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Practis">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="VLDNAnchor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="SalesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DealCurrentStatuses" EntityType="Self.DealCurrentStatus" />
+          <EntitySet Name="DealOpportunityStatuses" EntityType="Self.DealOpportunityStatus" />
+          <EntitySet Name="DealOpportunityTypes" EntityType="Self.DealOpportunityType" />
+          <EntitySet Name="DealRegions" EntityType="Self.DealRegion" />
+          <EntitySet Name="Deals" EntityType="Self.Deal" />
+          <EntitySet Name="DealVerticals" EntityType="Self.DealVertical" />
+          <EntitySet Name="DeliveryAnchors" EntityType="Self.DeliveryAnchor" />
+          <EntitySet Name="DeliveryLeads" EntityType="Self.DeliveryLead" />
+          <EntitySet Name="FarmingAnchors" EntityType="Self.FarmingAnchor" />
+          <EntitySet Name="Practises" EntityType="Self.Practis" />
+          <EntitySet Name="VLDNAnchors" EntityType="Self.VLDNAnchor" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SalesModelStoreContainer" CdmEntityContainer="SalesEntities">
+          <EntitySetMapping Name="DealCurrentStatuses">
+            <EntityTypeMapping TypeName="SalesModel.DealCurrentStatus">
+              <MappingFragment StoreEntitySet="DealCurrentStatuses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DealOpportunityStatuses">
+            <EntityTypeMapping TypeName="SalesModel.DealOpportunityStatus">
+              <MappingFragment StoreEntitySet="DealOpportunityStatuses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DealOpportunityTypes">
+            <EntityTypeMapping TypeName="SalesModel.DealOpportunityType">
+              <MappingFragment StoreEntitySet="DealOpportunityTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DealRegions">
+            <EntityTypeMapping TypeName="SalesModel.DealRegion">
+              <MappingFragment StoreEntitySet="DealRegions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deals">
+            <EntityTypeMapping TypeName="SalesModel.Deal">
+              <MappingFragment StoreEntitySet="Deals">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="OppurtunityName" ColumnName="OppurtunityName" />
+                <ScalarProperty Name="OppurtunityDescription" ColumnName="OppurtunityDescription" />
+                <ScalarProperty Name="CiarraID" ColumnName="CiarraID" />
+                <ScalarProperty Name="DealOpportunityStatusId" ColumnName="DealOpportunityStatusId" />
+                <ScalarProperty Name="DealOpportunityTypeId" ColumnName="DealOpportunityTypeId" />
+                <ScalarProperty Name="DealVerticalId" ColumnName="DealVerticalId" />
+                <ScalarProperty Name="DealRegionId" ColumnName="DealRegionId" />
+                <ScalarProperty Name="PractiseId" ColumnName="PractiseId" />
+                <ScalarProperty Name="EstAdditionalTCV" ColumnName="EstAdditionalTCV" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="DealExpClosureQtr" ColumnName="DealExpClosureQtr" />
+                <ScalarProperty Name="DealEngStartDate" ColumnName="DealEngStartDate" />
+                <ScalarProperty Name="DealCurrentStatusId" ColumnName="DealCurrentStatusId" />
+                <ScalarProperty Name="SubAdditionalTCV" ColumnName="SubAdditionalTCV" />
+                <ScalarProperty Name="FY16Revenue" ColumnName="FY16Revenue" />
+                <ScalarProperty Name="Q1Revenue" ColumnName="Q1Revenue" />
+                <ScalarProperty Name="Q2Revenue" ColumnName="Q2Revenue" />
+                <ScalarProperty Name="Q3Revenue" ColumnName="Q3Revenue" />
+                <ScalarProperty Name="Q4Revenue" ColumnName="Q4Revenue" />
+                <ScalarProperty Name="Competition" ColumnName="Competition" />
+                <ScalarProperty Name="CurrSupportReq" ColumnName="CurrSupportReq" />
+                <ScalarProperty Name="WklyRunningUpdates" ColumnName="WklyRunningUpdates" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="DealFarmingLead" ColumnName="DealFarmingLead" />
+                <ScalarProperty Name="DealVLDNLead" ColumnName="DealVLDNLead" />
+                <ScalarProperty Name="DeliveryLeadId" ColumnName="DeliveryLeadId" />
+                <ScalarProperty Name="FarmingAnchorId" ColumnName="FarmingAnchorId" />
+                <ScalarProperty Name="VLDNAnchorId" ColumnName="VLDNAnchorId" />
+                <ScalarProperty Name="DeliveryAnchorId" ColumnName="DeliveryAnchorId" />
+                <ScalarProperty Name="ContractSignDate" ColumnName="ContractSignDate" />
+                <ScalarProperty Name="PractiseSME" ColumnName="PractiseSME" />
+                <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DealVerticals">
+            <EntityTypeMapping TypeName="SalesModel.DealVertical">
+              <MappingFragment StoreEntitySet="DealVerticals">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryAnchors">
+            <EntityTypeMapping TypeName="SalesModel.DeliveryAnchor">
+              <MappingFragment StoreEntitySet="DeliveryAnchors">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryLeads">
+            <EntityTypeMapping TypeName="SalesModel.DeliveryLead">
+              <MappingFragment StoreEntitySet="DeliveryLeads">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FarmingAnchors">
+            <EntityTypeMapping TypeName="SalesModel.FarmingAnchor">
+              <MappingFragment StoreEntitySet="FarmingAnchors">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Practises">
+            <EntityTypeMapping TypeName="SalesModel.Practis">
+              <MappingFragment StoreEntitySet="Practises">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VLDNAnchors">
+            <EntityTypeMapping TypeName="SalesModel.VLDNAnchor">
+              <MappingFragment StoreEntitySet="VLDNAnchors">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

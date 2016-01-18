@@ -1,0 +1,83 @@
+<div  ng-init="init()">
+    <h3>DealCurrentStatuses</h3>
+
+    <div>
+
+        <button type="button" ng-click="openNewDealCurrentStatusModel()" class="btn btn-sm btn-success">
+            <i class="glyphicon glyphicon-plus">
+            </i> Add
+        </button>
+
+        <table st-table="dealcurrentstatuss" st-safe-src="rowCollection" class="table table-striped">
+            <thead>
+                <tr>
+                    <th st-sort="firstName">Name</th>
+                    <th st-sort="Description">Description</th>
+                </tr>
+                <!--<tr>
+                    <th colspan="5"><input st-search="" class="form-control" placeholder="global search ..." type="text" /></th>
+                </tr>-->
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in dealcurrentstatuss">
+                    <td>{{row.DealCurrentStatus_Name}}</td>
+                    <td>{{row.DealCurrentStatus_Description}}</td>
+                    <td>
+                        <button type="button" ng-click="editDealCurrentStatusModel(row)" class="btn btn-sm btn-danger">
+                            <i class="glyphicon glyphicon-pencil">
+                            </i>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" ng-click="deleteDealCurrentStatusModel(row)" class="btn btn-sm btn-danger">
+                            <i class="glyphicon glyphicon-remove-circle">
+                            </i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+         
+    </div>
+</div>
+<script type="text/ng-template" id="DealCurrentStatusModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">New dealcurrentstatus</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="control-label" for="name">Name</label>
+            <div class="controls">
+                <input type="text" data-ng-model="selectedDealCurrentStatus.DealCurrentStatus_Name" id="name" class="form-control" placeholder="Enter a dealcurrentstatus name" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="name">Description</label>
+            <div class="controls">
+                <input type="text" data-ng-model="selectedDealCurrentStatus.DealCurrentStatus_Description" id="name" class="form-control" placeholder="Enter a dealcurrentstatus description" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div data-ng-show="error" class="text-danger">
+                <strong data-ng-bind="error"></strong>
+            </div>
+        </div>
+         
+    </div>
+     
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">Save</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+<script type="text/ng-template" id="DealCurrentStatusDeleteConfirmationModalContent.html">
+     
+    <div class="modal-body">
+        <h5>Are you sure you want to delte this item?</h5>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">Delete</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>

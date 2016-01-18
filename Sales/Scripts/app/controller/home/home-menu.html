@@ -1,0 +1,5 @@
+<ul class="nav nav-tabs row">
+    <li ng-repeat="menu in menus" ng-class="{'active':menu.active}" class="col-md-12">
+        <a ui-sref="{{menu.path}}">{{menu.text}}</a>
+    </li>
+</ul>

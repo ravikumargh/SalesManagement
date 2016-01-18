@@ -1,0 +1,137 @@
+<div ng-init="init()">
+    <h3>Deals</h3>
+    <div>
+        <button type="button" ng-click="openNewDealModel()" class="btn btn-sm btn-success">
+            <i class="glyphicon glyphicon-plus">
+            </i> Add
+        </button>
+        <!--<button type="button" ng-click="addNewDealRecord()" class="btn btn-sm btn-success">
+            <i class="glyphicon glyphicon-plus">
+            </i> Add row
+        </button>-->
+        <table st-table="deals" st-safe-src="rowCollection" class="table table-striped">
+            <thead>
+                <tr>
+                    <th st-sort="CustomerName">CustomerName</th>
+                    <th st-sort="OppurtunityName">OppurtunityName</th>
+                    <th st-sort="OppurtunityDescription">OppurtunityDescription</th>
+                    <th st-sort="firstName">DealOpportunityStatus</th>
+                    <th st-sort="firstName">DealCurrentStatus</th>
+                    <th st-sort="firstName">Phone Number</th>
+                    <th st-sort="firstName">EstAdditionalTCV</th>
+                </tr>
+                <!--<tr>
+                    <th colspan="5"><input st-search="" class="form-control" placeholder="global search ..." type="text" /></th>
+                </tr>-->
+            </thead>
+            <tbody>
+                <tr ng-repeat="deal in deals">
+                    <td>{{deal.CustomerName}}<!--<input type="text" name="name" ng-model="deal.CustomerName" />--></td>
+                    <td>{{deal.OppurtunityName}}</td>
+                    <td>{{deal.OppurtunityDescription}}</td>
+                    <td>{{getDealOpportunityStatusDetails(this).Name}}</td>
+                    <td>{{getDealCurrentStatusDetails(this).Name}}</td>
+                    <td>{{deal.CiarraID}}</td>
+                    <td>{{deal.EstAdditionalTCV}}</td> 
+                    <td>
+                        <button type="button" ng-click="editDealModel(deal)" class="btn btn-sm btn-danger">
+                            <i class="glyphicon glyphicon-pencil">
+                            </i>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" ng-click="deleteDealModel(deal)" class="btn btn-sm btn-danger">
+                            <i class="glyphicon glyphicon-remove">
+                            </i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<script type="text/ng-template" id="DealModalContent.html">
+    <form>
+        <div class="modal-header">
+            <h3 class="modal-title">New deal</h3>
+        </div>
+        <div class="modal-body row">
+            <div class="col-lg-3">
+                <label class="control-label" for="CustomerName">CustomerName</label>
+                <div class="controls">
+                    <input type="text" data-ng-model="selectedDeal.CustomerName" id="CustomerName" required class="form-control" placeholder="Enter a deal CustomerName" required>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <label class="control-label" for="OppurtunityName">OppurtunityName</label>
+                <div class="controls">
+                    <input type="text" data-ng-model="selectedDeal.OppurtunityName" id="OppurtunityName" class="form-control" placeholder="Enter an OppurtunityName" required>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <label class="control-label" for="OppurtunityDescription">OppurtunityDescription</label>
+                <div class="controls">
+                    <input type="text" data-ng-model="selectedDeal.OppurtunityDescription" id="OppurtunityDescription" class="form-control" placeholder="Enter an OppurtunityDescription" required>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <label class="control-label" for="CiarraID">CiarraID</label>
+                <div class="controls">
+                    <input type="text" data-ng-model="selectedDeal.CiarraID" id="name" class="form-control" placeholder="Enter a Phone Number" required>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <label class="control-label" for="EstAdditionalTCV">EstAdditionalTCV</label>
+                <div class="controls">
+                    <input type="text" data-ng-model="selectedDeal.EstAdditionalTCV" id="EstAdditionalTCV" class="form-control" placeholder="Enter an EstAdditionalTCV" required>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <label class="control-label" for="DealCurrentStatus">DealCurrentStatus</label>
+                <div class="controls">
+                    {{selectedDeal}}
+                    <select ng-model="selectedDeal.DealCurrentStatusId" ng-options="dealcurrentstatus.Id as dealcurrentstatus.Name for dealcurrentstatus in dealcurrentstatuss" class="form-control">
+                        <option value="">Select A DealCurrentStatus</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <label class="control-label" for="DealOpportunityStatus">DealOpportunityStatus</label>
+                <div class="controls">
+                    <select ng-model="selectedDeal.DealOpportunityStatusId" ng-options="dealopportunitystatus.Id as dealopportunitystatus.Name for dealopportunitystatus in dealopportunitystatuss" class="form-control">
+                        <option value="">Select A DealOpportunityStatus</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+            </div>
+
+        </div>
+
+        <!--<div class="modal-body">
+            Name : <input id="Text1" type="text" ng-model="newdeal.Name" />
+            <br />
+             Code : <input id="Text1" type="text" ng-model="newdeal.Code" />
+        </div>-->
+        <div class="modal-footer">
+            <input type="submit" name="name" value="Ok" class="btn btn-primary" ng-click="ok()" />
+             <!--<button class="btn btn-primary" type="button" ng-click="ok()">Ok</button>-->
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+        </form>
+</script>
+<script type="text/ng-template" id="DealDeleteConfirmationModalContent.html">
+   
+        <div class="modal-body">
+            <h5>Are you sure you want to delte this item?</h5>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">Delete</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    
+</script>
