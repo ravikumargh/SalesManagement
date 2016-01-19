@@ -53,6 +53,7 @@ angular.module('AdminApp')
       $scope.init = function () {
 
           $scope.deals = null;
+          $scope.dealsTemp = [];
           $scope.dealcurrentstatuss = null;
 
           DealService.getDeals()
@@ -131,12 +132,18 @@ angular.module('AdminApp')
       };
 
       $scope.addNew = function (newDeal) {
+          $scope.dealsTemp.push(newDeal);
+          $scope.deals.push(newDeal);
+          console.log($scope.dealsTemp);
+
+          /*
           DealService.addNewDeal(newDeal).then(function (response) {
               $scope.init();
           },
           function (err) {
 
           });
+          */
       }
 
       $scope.update = function (deal) {
