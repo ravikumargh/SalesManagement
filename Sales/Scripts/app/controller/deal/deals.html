@@ -1,10 +1,30 @@
 <div ng-init="init()">
     <h3>Deals</h3>
     <div>
-        <button type="button" ng-click="openNewDealModel()" class="btn btn-sm btn-success">
-            <i class="glyphicon glyphicon-plus">
-            </i> Add
-        </button>
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <button type="button" ng-click="openNewDealModel()" class="btn btn-sm btn-success">
+                    <i class="glyphicon glyphicon-plus">
+                    </i> Add
+                </button>
+
+            </div>
+            <div class="col-md-6">
+
+                <!--<input id="bulkfile" type="button" name="bulkfile" value="Submit" class="pull-right btn btn-sm btn-success" />-->
+                <button ng-click="uploadFile()" class="pull-right btn btn-sm btn-success">Upload</button>
+                <input id="bulkfile" type="file" name="bulkfile" value=" " file-model="file" class="pull-right " /> 
+                <!--<p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>-->
+            </div>
+
+        </div>
         <!--<button type="button" ng-click="addNewDealRecord()" class="btn btn-sm btn-success">
             <i class="glyphicon glyphicon-plus">
             </i> Add row
@@ -19,6 +39,7 @@
                     <th st-sort="firstName">DealCurrentStatus</th>
                     <th st-sort="firstName">Phone Number</th>
                     <th st-sort="firstName">EstAdditionalTCV</th>
+                    <th st-sort="DealEngStartDate">DealEngStartDate</th>
                 </tr>
                 <!--<tr>
                     <th colspan="5"><input st-search="" class="form-control" placeholder="global search ..." type="text" /></th>
@@ -32,7 +53,8 @@
                     <td>{{getDealOpportunityStatusDetails(this).Name}}</td>
                     <td>{{getDealCurrentStatusDetails(this).Name}}</td>
                     <td>{{deal.CiarraID}}</td>
-                    <td>{{deal.EstAdditionalTCV}}</td> 
+                    <td>{{deal.EstAdditionalTCV}}</td>
+                    <td>{{deal.DealEngStartDate}}</td>
                     <td>
                         <button type="button" ng-click="editDealModel(deal)" class="btn btn-sm btn-danger">
                             <i class="glyphicon glyphicon-pencil">
@@ -104,6 +126,26 @@
                     </select>
                 </div>
             </div>
+            
+
+            <div class="col-lg-3">
+                <label class="control-label" for="DealEngStartDate">DealEngStartDate</label>
+                <div class="controls">
+                    <input type="text" data-ng-model="selectedDeal.DealEngStartDate" id="DealEngStartDate" class="form-control" placeholder="Enter an DealEngStartDate" required>
+                    <p class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                
+                </div>
+            </div>
+
+
+
+
+
             <div class="form-group">
                 <div data-ng-show="error" class="text-danger">
                     <strong data-ng-bind="error"></strong>
@@ -119,19 +161,19 @@
         </div>-->
         <div class="modal-footer">
             <input type="submit" name="name" value="Ok" class="btn btn-primary" ng-click="ok()" />
-             <!--<button class="btn btn-primary" type="button" ng-click="ok()">Ok</button>-->
+            <!--<button class="btn btn-primary" type="button" ng-click="ok()">Ok</button>-->
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>
-        </form>
+    </form>
 </script>
 <script type="text/ng-template" id="DealDeleteConfirmationModalContent.html">
-   
-        <div class="modal-body">
-            <h5>Are you sure you want to delte this item?</h5>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="ok()">Delete</button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-        </div>
-    
+
+    <div class="modal-body">
+        <h5>Are you sure you want to delte this item?</h5>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">Delete</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+
 </script>

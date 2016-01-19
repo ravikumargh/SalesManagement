@@ -20,7 +20,21 @@ angular.module('AdminApp').factory('DealService', ['$http', '$q', 'localStorageS
         dataFactory.deleteDeal = function (deal_id) {
             return $http.delete(urlBase + deal_id + '/');
         };
+    //file upload reference
+    //https://jsfiddle.net/JeJenny/ZG9re/
 
+        dataFactory.uploadFile = function (file) {
+            var fd = new FormData();
+            fd.append('file', file);
+            $http.post('api/file', fd, {
+                transformRequest: angular.identity,
+                headers: { 'Content-Type': undefined }
+            })
+            .success(function () {
+            })
+            .error(function () {
+            });
+        }
         return dataFactory;
     }
 ]);
